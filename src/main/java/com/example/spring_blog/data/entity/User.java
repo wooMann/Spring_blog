@@ -23,7 +23,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id" , nullable = false, unique = true)
-    private Integer id;
+    private Long id;
 
     @Column(name = "email" ,nullable = false)
     private String email;
@@ -34,7 +34,8 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "token_id")
     private EmailTokens emailTokens;
 
     @Column(name = "created_at")

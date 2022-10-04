@@ -11,7 +11,7 @@ import java.util.Date;
 @ToString
 public class EmailTokensDTO implements DTO{
     private Integer id;
-    private Integer userId;
+    private Long userId;
     private String token;
     private Date authAt;
     private Integer state;

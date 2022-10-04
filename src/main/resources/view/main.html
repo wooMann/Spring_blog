@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<script th:inline="javascript">
-    /*<![CDATA[*/
-    document.addEventListener("DOMContentLoaded", function () {
-        alert([[${session.SESSION_USER_ID}]])
-        if ([[${session.SESSION_USER_ID}]] == null) {
-            location.href = 'login'
-        }
-    });
-    /*]]>*/
-</script>
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 메인페이지 입니다
+<button onclick="location.href='/logout'">
+로그아웃
+</button>
 
 </body>
 </html>

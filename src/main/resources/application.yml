@@ -1,0 +1,28 @@
+# DB ?? ??
+spring:
+  datasource:
+    url: jdbc:mysql://175.210.112.200:3006/posts?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    username: bizplus
+    password: bizplus
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+  # ???? ?? ???
+  thymeleaf:
+    cache: false
+    enabled: true
+    encoding: UTF-8
+    mode: html
+    prefix : classpath:view/
+
+# ?? ?? ??
+server:
+  port: 8080

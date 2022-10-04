@@ -3,21 +3,24 @@ package com.example.spring_blog.service;
 
 import com.example.spring_blog.data.dao.UserDAO;
 import com.example.spring_blog.data.dto.user.UserDTO;
-
 import com.example.spring_blog.data.entity.User;
-import com.example.spring_blog.data.repository_.UserRepository;
+import com.example.spring_blog.data.repository.UserRepository;
+import com.example.spring_blog.util.Sha256HashGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 @RequiredArgsConstructor
 public class UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     private UserDAO userDAO = new UserDAO();
+
 
     public Optional<User> findById(Integer id){
         return userDAO.find(User.class,id);
@@ -34,7 +37,7 @@ public class UserService {
     }
 
     public boolean findByEmail(UserDTO dto){
-        Optional<User> result =  userDAO.findByEmail(dto.getEmail());
+        Optional<User> result = Optional.ofNullable(userRepository.findUserByEmail(dto.getEmail()));
         return result.isPresent() ? true : false;
     }
 
@@ -45,8 +48,7 @@ public class UserService {
     }
 
     public Optional<User> login(UserDTO dto)  {
-        return Optional.ofNullable(userRepository.findByEmailAndPassword(dto.getEmail(), dto.getPassword()));
-       //return userDAO.login(dto);
+        return Optional.ofNullable(userRepository.findByEmailAndPassword(dto.getEmail(), Sha256HashGenerator.hashGenerate(dto.getPassword())));
     }
 
     public User findUserByEmail(UserDTO dto) {

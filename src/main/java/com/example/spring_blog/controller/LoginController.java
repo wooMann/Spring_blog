@@ -5,6 +5,9 @@ import com.example.spring_blog.data.dto.user.UserDTO;
 import com.example.spring_blog.data.entity.User;
 import com.example.spring_blog.manager.SessionManager;
 import com.example.spring_blog.service.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +17,11 @@ import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Controller
+@RequiredArgsConstructor
 public class LoginController {
+
+
+    private final UserService userService;
 
     @GetMapping("login")
     public String loginPage(){
@@ -23,9 +30,8 @@ public class LoginController {
 
     @PostMapping("login")
     public String login(UserDTO dto, BindingResult bindingResult, HttpSession session){
-        UserService userService = new UserService();
-        Optional<User> result =  userService.login(dto);
 
+        Optional<User> result =  userService.login(dto);
 
         if (result.isPresent()){
             SessionManager.setSessionInfo(session,result.get());

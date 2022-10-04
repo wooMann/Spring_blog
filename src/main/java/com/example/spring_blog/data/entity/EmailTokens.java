@@ -22,7 +22,7 @@ public class EmailTokens {
     @Column(name = "id" , nullable = false, unique = true)
     private Integer id;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

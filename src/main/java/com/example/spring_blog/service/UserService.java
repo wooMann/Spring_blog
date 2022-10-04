@@ -5,13 +5,17 @@ import com.example.spring_blog.data.dao.UserDAO;
 import com.example.spring_blog.data.dto.user.UserDTO;
 
 import com.example.spring_blog.data.entity.User;
+import com.example.spring_blog.data.repository_.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
 public class UserService {
+
+    private UserRepository userRepository;
 
     private UserDAO userDAO = new UserDAO();
 
@@ -41,7 +45,8 @@ public class UserService {
     }
 
     public Optional<User> login(UserDTO dto)  {
-       return userDAO.login(dto);
+        return Optional.ofNullable(userRepository.findByEmailAndPassword(dto.getEmail(), dto.getPassword()));
+       //return userDAO.login(dto);
     }
 
     public User findUserByEmail(UserDTO dto) {

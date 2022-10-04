@@ -3,6 +3,7 @@
 <script th:inline="javascript">
     /*<![CDATA[*/
     document.addEventListener("DOMContentLoaded", function () {
+        alert([[${session.SESSION_USER_ID}]])
         if ([[${session.SESSION_USER_ID}]] == null) {
             location.href = 'login'
         }

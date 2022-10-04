@@ -21,14 +21,17 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping("loginProc")
-    public String loginProc(UserDTO dto, BindingResult bindingResult, HttpSession session){
+    @PostMapping("login")
+    public String login(UserDTO dto, BindingResult bindingResult, HttpSession session){
         UserService userService = new UserService();
         Optional<User> result =  userService.login(dto);
 
+
         if (result.isPresent()){
             SessionManager.setSessionInfo(session,result.get());
-            return "main";
+            System.out.println(session.getAttribute("SESSION_USER_ID"));
+            System.out.println(session.getAttribute("SESSION_USER_NAME"));
+            return "redirect:main";
         }
         bindingResult.reject("로그인실패");
         return "redirect:login";

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/post/create" method="post">
+ 제목 :  <input type="text" id="title" name="title">
+ 글쓰기 :  <input style="height: 400px" type="text" id="body" name="body">
+  <input type="hidden" id="userId" name="userId" th:value="${session.SESSION_USER_ID}">
+    <button type="submit"> 작성완료 </button>
+</form>
+
+</body>
+</html>

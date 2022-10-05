@@ -2,6 +2,7 @@ package com.example.spring_blog.data.dto.user;
 
 
 import com.example.spring_blog.data.entity.User;
+import com.example.spring_blog.util.Sha256HashGenerator;
 import lombok.*;
 
 @Getter
@@ -20,7 +21,7 @@ public class UserDTO {
         return User.builder()
                 .id(getId())
                 .email(getEmail())
-                .password(getPassword())
+                .password(Sha256HashGenerator.hashGenerate(getPassword()))
                 .name(getName())
                 .build();
     }

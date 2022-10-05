@@ -22,7 +22,8 @@ spring:
     encoding: UTF-8
     mode: html
     prefix : classpath:view/
+    suffix: .html
 
 # ?? ?? ??
 server:
-  port: 8080
+  port: 8090

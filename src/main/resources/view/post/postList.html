@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>글번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="postlist : ${postList}">
+                    <td th:text="${postlist.id}"></td>
+                    <td><a th:href="@{/post/edit(id=${postlist.id})}" th:text="${postlist.title}"></a></td>
+                    <td th:text="${postlist.user.name}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+            <tr align="right" th:if="${session.SESSION_USER_ID != null}">
+                <td>
+                    <button class="btn btn-outline-info" type="button" id="createBtn" onclick="location.href='/post/create'">
+                        글쓰기
+                    </button>
+                </td>
+            </tr>
+
+
+    </div>
+</div>
+
+</body>
+</html>

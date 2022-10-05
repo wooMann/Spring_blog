@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script th:inline="javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        /*<![CDATA[*/
+        var message = /*[[${message}]]*/'default';
+        if ([[${message}]] != null) {
+            alert([[${message}]])
+        }
+        if ([[${path}]] != null) {
+            window.location.href = /*[[${path}]]*/;
+        }
+        /*]]>*/
+    })
+</script>
+
+</body>
+</html>

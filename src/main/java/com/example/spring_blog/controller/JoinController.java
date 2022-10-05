@@ -17,15 +17,15 @@ public class JoinController {
 
     private final UserService userService;
 
+
     @GetMapping("join")
     public String joinPage() {
 
         return "join";
     }
 
-    @PostMapping("joinProc")
+    @PostMapping("join")
     public String joinProc(UserDTO dto, BindingResult bindingResult) {
-
         User findResult = userService.findUserByEmail(dto);
         if (findResult == null) {
             Optional<User> joinResult = userService.join(dto);
@@ -33,11 +33,12 @@ public class JoinController {
                 bindingResult.reject("가입실패");
                 return "join";
             }
-            userService.join(dto);
             return "login";
         }else{
             bindingResult.reject("이미 존재하는 메일");
             return "join";
         }
     }
+
+
 }

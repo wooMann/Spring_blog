@@ -23,6 +23,10 @@ spring:
     mode: html
     prefix : classpath:view/
     suffix: .html
+  server:
+    servlet:
+      encoding:
+        charset: UTF-8
 
 # ?? ?? ??
 server:

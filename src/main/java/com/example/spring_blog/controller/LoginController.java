@@ -6,8 +6,7 @@ import com.example.spring_blog.data.entity.User;
 import com.example.spring_blog.manager.SessionManager;
 import com.example.spring_blog.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +27,7 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping("login")
+    @PostMapping("loginProc")
     public String login(UserDTO dto, BindingResult bindingResult, HttpSession session){
 
         Optional<User> result =  userService.login(dto);

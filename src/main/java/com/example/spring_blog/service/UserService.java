@@ -22,8 +22,6 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final TokenRepository tokenRepository;
-
-
     public Optional<User> findById(Long id){
         return userRepository.findById(id);
     }

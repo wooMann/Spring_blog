@@ -22,6 +22,8 @@ public class AuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
         String errorMessage;
         if (exception instanceof BadCredentialsException) {
+            System.out.println(request.getParameter("email"));
+            System.out.println(request.getParameter("password"));
             errorMessage = "id,pw wrong.";
         } else if (exception instanceof InternalAuthenticationServiceException) {
             errorMessage = "server error.";
@@ -32,6 +34,7 @@ public class AuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
         } else {
             errorMessage = "no idea.";
         }
+        exception.printStackTrace();
         setDefaultFailureUrl("/login?error=true&exception=" + errorMessage);
         super.onAuthenticationFailure(request, response, exception);
 

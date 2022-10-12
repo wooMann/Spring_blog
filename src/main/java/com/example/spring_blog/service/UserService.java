@@ -10,6 +10,9 @@ import com.example.spring_blog.util.Sha256HashGenerator;
 import com.example.spring_blog.util.TokenCreator;
 import jdk.nashorn.internal.parser.Token;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 
@@ -18,7 +21,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final TokenRepository tokenRepository;
@@ -76,5 +79,12 @@ public class UserService {
         user.setId(dto.getId());
 
         userRepository.deleteById(dto.getId());
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findUserByEmail(email);
+        if (user == null) throw new UsernameNotFoundException("Not Found User");
+        return user;
     }
 }

@@ -15,15 +15,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@NamedQueries({
-        @NamedQuery(name = "Post.findAll",query = "select p from Post p")
-})
 public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id" , nullable = false, unique = true)
-    private Integer id;
+    private Long id;
 
     @Column(name = "title",nullable = false)
     private String title;
@@ -31,7 +28,7 @@ public class Post {
     @Column(name = "body")
     private String body;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -43,8 +40,7 @@ public class Post {
 
     @Column(name = "deleted_at")
     private Date deletedAt;
-
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post",fetch =FetchType.LAZY)
     private List<Comment> comments = new ArrayList<>();
     public void addComments(Comment comment){
         comment.setPost(this);
@@ -53,10 +49,4 @@ public class Post {
 
     @OneToMany(mappedBy = "post")
     private List<PostTag> postTags = new ArrayList<>();
-
-
-
-
-
-
 }

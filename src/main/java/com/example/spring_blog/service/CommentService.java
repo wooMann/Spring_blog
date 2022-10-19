@@ -31,7 +31,7 @@ public class CommentService {
         return Optional.ofNullable(commentRepository.save(comment));
     }
 
-    public List<Comment> findAllByPostId(Integer postId) {
+    public List<Comment> findAllByPostId(Long postId) {
         return commentRepository.findAllByPost(Post.builder().id(postId).build());
     }
 

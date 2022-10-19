@@ -16,7 +16,7 @@ public class CommentDTO {
 
     private Integer id;
     private String body;
-    private Integer postId;
+    private Long postId;
     private Long userId;
     private Integer commentId;
     private String userIp;

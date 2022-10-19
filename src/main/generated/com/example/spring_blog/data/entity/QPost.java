@@ -30,7 +30,7 @@ public class QPost extends EntityPathBase<Post> {
 
     public final DateTimePath<java.util.Date> deletedAt = createDateTime("deletedAt", java.util.Date.class);
 
-    public final NumberPath<Integer> id = createNumber("id", Integer.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final ListPath<PostTag, QPostTag> postTags = this.<PostTag, QPostTag>createList("postTags", PostTag.class, QPostTag.class, PathInits.DIRECT2);
 

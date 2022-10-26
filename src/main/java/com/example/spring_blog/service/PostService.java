@@ -2,7 +2,6 @@ package com.example.spring_blog.service;
 
 import com.example.spring_blog.data.dto.post.PostDTO;
 import com.example.spring_blog.data.entity.Post;
-import com.example.spring_blog.data.mapper.PostMapper;
 import com.example.spring_blog.data.repository.CommentRepository;
 import com.example.spring_blog.data.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,12 +24,12 @@ public class PostService {
         return Optional.ofNullable(postRepository.save(post));
     }
 
-    public Optional<Post> updatePost(PostDTO dto){
+  /*  public Optional<Post> updatePost(PostDTO dto){
         Post post = PostMapper.dtoToEntity(dto);
         post.setId(dto.getId());
         post.setUpdatedAt(new Date());
         return Optional.ofNullable(postRepository.save(post));
-    }
+    }*/
 
     public Optional<Post> findById(Long id){
         Optional<Post> post = postRepository.findById(id);

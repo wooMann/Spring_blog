@@ -1,4 +1,4 @@
-package com.example.spring_blog.util;
+package com.example.spring_blog.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.context.annotation.Bean;

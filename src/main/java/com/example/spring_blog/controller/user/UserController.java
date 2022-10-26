@@ -3,10 +3,11 @@ package com.example.spring_blog.controller.user;
 
 import com.example.spring_blog.data.dto.user.UserDTO;
 import com.example.spring_blog.data.entity.User;
-import com.example.spring_blog.data.mapper.ResponseManager;
+import com.example.spring_blog.manager.ResponseManager;
 import com.example.spring_blog.manager.SessionConstant;
 import com.example.spring_blog.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
-@RequestMapping("/post")
+@RequestMapping("/user")
 @RequiredArgsConstructor
-public class UserEditController{
+public class UserController {
 
     final UserService userService;
     @GetMapping("edit")
@@ -49,7 +50,13 @@ public class UserEditController{
             ResponseManager.responseFailWithMessage(request,"사용자 수정에 실패했습니다");
             return "pathHandler";
         }
+    }
 
+    @GetMapping("/list")
+    public String doGet(HttpServletRequest request, Model model) {
+
+        model.addAttribute("userList",userService.findAllUser());
+        return "userList";
     }
 
 

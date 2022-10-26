@@ -1,11 +1,12 @@
-package com.example.spring_blog.data.repository;
+package com.example.spring_blog.data.repository.impl;
 
 import com.example.spring_blog.data.entity.Post;
+import com.example.spring_blog.data.entity.QPost;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
-import static com.example.spring_blog.data.entity.QPost.post;
+
 @Repository
 public class PostQueryDslImpl {
 
@@ -16,6 +17,7 @@ public class PostQueryDslImpl {
     }
 
     public List<Post> findAllInnerJoinComment(){
+        QPost post = QPost.post;
         return jpaQueryFactory
                 .selectFrom(post)
                 .innerJoin(post.comments)

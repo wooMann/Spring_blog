@@ -1,4 +1,4 @@
-package com.example.spring_blog.util.config;
+package com.example.spring_blog.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

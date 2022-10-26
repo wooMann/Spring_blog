@@ -2,8 +2,7 @@ package com.example.spring_blog.service;
 
 import com.example.spring_blog.data.dto.post.PostDTO;
 import com.example.spring_blog.data.entity.Post;
-import com.example.spring_blog.data.mapper.PostMapperStructure;
-import com.example.spring_blog.data.mapper.PostMapperStructureImpl;
+import com.example.spring_blog.data.mapper.PostMapper;
 import com.example.spring_blog.data.repository.PostRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -27,20 +26,16 @@ class PostServiceTest {
     @Test
     @Transactional
     public void findByPostIdSuccess() {
-        Post post = new Post();
-        post.setId(7L);
+        PostDTO dto = new PostDTO();
+        dto.setId(7L);
+        Post post = PostMapper.dtoToEntity(dto);
         Optional<Post> result = postRepository.findById(post.getId());
-     //   PostDTO dto = PostMapperStructureImpl.MAPPING.entityToDto(result.get());
-        assertTrue(result.isPresent());
-       // assertTrue(dto != null);
-        System.out.println(result.get().getComments().size());
-        System.out.println(result.get().getComments().get(1).getBody());
-        result.get().getComments().stream().forEach(comment -> System.out.println(comment.getBody()));
 
+        assertTrue(result.isPresent());
     }
     @Test
 
-    public void findByPostIdSFail() {
+    public void findByPostIdsFailed() {
         Post post = new Post();
         post.setId(0L);
         Optional<Post> result = postRepository.findById(post.getId());

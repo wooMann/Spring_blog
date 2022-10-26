@@ -16,7 +16,7 @@
     <properties>
         <java.version>1.8</java.version>
         <m2e.apt.activation>jdt_apt</m2e.apt.activation>
-        <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
+       <!-- <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>-->
     </properties>
     <dependencies>
         <dependency>
@@ -76,11 +76,11 @@
             <version>5.0.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+      <!--  <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>1.5.3.Final</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
@@ -95,11 +95,11 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok-mapstruct-binding</artifactId>
             <version>0.1.0</version>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 
@@ -132,7 +132,7 @@
                             <goal>process</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>src/main/generated</outputDirectory>
+                            <outputDirectory>target/generated-sources/annotations</outputDirectory>
                             <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                         </configuration>
                     </execution>
@@ -145,14 +145,14 @@
                 <configuration>
                     <source>1.8</source> <!-- depending on your project -->
                     <target>1.8</target> <!-- depending on your project -->
-                    <annotationProcessorPaths>
+                    <!--<annotationProcessorPaths>
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
                             <version>${org.mapstruct.version}</version>
                         </path>
-                        <!-- other annotation processors -->
-                    </annotationProcessorPaths>
+                        &lt;!&ndash; other annotation processors &ndash;&gt;
+                    </annotationProcessorPaths>-->
                 </configuration>
             </plugin>
         </plugins>

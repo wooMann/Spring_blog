@@ -6,7 +6,7 @@ import com.example.spring_blog.data.entity.Comment;
 import com.example.spring_blog.data.entity.Post;
 import com.example.spring_blog.data.entity.PostTag;
 import com.example.spring_blog.data.entity.User;
-import com.example.spring_blog.data.mapper.PostMapper;
+
 import lombok.*;
 
 import javax.persistence.Column;

@@ -21,7 +21,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class UserService implements UserDetailsService {
+public class UserService {
 
     private final UserRepository userRepository;
     private final TokenRepository tokenRepository;
@@ -49,7 +49,7 @@ public class UserService implements UserDetailsService {
 
 
     public boolean findByEmail(UserDTO dto){
-        Optional<User> result = Optional.ofNullable(userRepository.findUserByEmail(dto.getEmail()));
+        Optional<User> result = Optional.ofNullable(userRepository.findByEmail(dto));
         return result.isPresent() ? true : false;
     }
 
@@ -60,12 +60,12 @@ public class UserService implements UserDetailsService {
     }
 
     public Optional<User> login(UserDTO dto)  {
-        return Optional.ofNullable(userRepository.findByEmailAndPassword(dto.getEmail(), Sha256HashGenerator.hashGenerate(dto.getPassword())));
+        return Optional.ofNullable(userRepository.findByEmailAndPassword(dto));
     }
 
     public User findUserByEmail(UserDTO dto) {
 
-        return userRepository.findUserByEmail(dto.getEmail());
+        return userRepository.findByEmail(dto);
     }
 
     public Optional<User> updateUser(UserDTO dto){
@@ -81,10 +81,5 @@ public class UserService implements UserDetailsService {
         userRepository.deleteById(dto.getId());
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findUserByEmail(email);
-        if (user == null) throw new UsernameNotFoundException("Not Found User");
-        return user;
-    }
+
 }

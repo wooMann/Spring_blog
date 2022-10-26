@@ -1,4 +1,4 @@
-package com.example.spring_blog.util.config;
+package com.example.spring_blog.config;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

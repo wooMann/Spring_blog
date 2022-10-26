@@ -15,6 +15,7 @@ spring:
       hibernate:
         format_sql: false
 
+
   # ???? ?? ???
   thymeleaf:
     cache: false

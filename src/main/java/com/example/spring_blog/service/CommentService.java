@@ -4,7 +4,7 @@ package com.example.spring_blog.service;
 import com.example.spring_blog.data.dto.comment.CommentDTO;
 import com.example.spring_blog.data.entity.Comment;
 import com.example.spring_blog.data.entity.Post;
-import com.example.spring_blog.data.mapper.CommentMapper;
+
 import com.example.spring_blog.data.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class CommentService {
 
     final CommentRepository commentRepository;
 
-    public Optional<Comment> createComment(CommentDTO dto) {
+    /*public Optional<Comment> createComment(CommentDTO dto) {
         return Optional.ofNullable(commentRepository.save(CommentMapper.dtoToEntity(dto)));
     }
 
@@ -29,7 +29,7 @@ public class CommentService {
         comment.setId(dto.getCommentId());
 
         return Optional.ofNullable(commentRepository.save(comment));
-    }
+    }*/
 
     public List<Comment> findAllByPostId(Long postId) {
         return commentRepository.findAllByPost(Post.builder().id(postId).build());

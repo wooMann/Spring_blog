@@ -1,4 +1,4 @@
-package com.example.spring_blog.util.config;
+package com.example.spring_blog.config;
 
 
 import com.example.spring_blog.exception.AuthFailureHandler;

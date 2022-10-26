@@ -1,4 +1,4 @@
-package com.example.spring_blog.data.mapper;
+package com.example.spring_blog.manager;
 
 import javax.servlet.http.HttpServletRequest;
 

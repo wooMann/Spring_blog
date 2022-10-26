@@ -1,6 +1,7 @@
 package com.example.spring_blog.data.repository;
 
 import com.example.spring_blog.data.entity.Post;
+import com.example.spring_blog.data.repository.impl.PostQueryDslImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
